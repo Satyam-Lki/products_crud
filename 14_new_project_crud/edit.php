@@ -10,17 +10,18 @@
 </head>
 <body>
 <?php
-    try {
-        $conn = new PDO('mysql:host=localhost;port=3306;dbname=products_db', 'root', '');
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-      }
-      catch (PDOException $e) {
-        echo "Connection failed: " . $e->getMessage();
-      }
+    require_once('connect.php');
+    // try {
+    //     $conn = new PDO('mysql:host=localhost;port=3306;dbname=products_db', 'root', '');
+    //     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    //   }
+    //   catch (PDOException $e) {
+    //     echo "Connection failed: " . $e->getMessage();
+    //   }
      $id= isset($_GET['id'])?$_GET['id']:null;
 
     if(isset($id)){
-        var_dump($id);
+        //var_dump($id);
 
           $query = "select * from products_db.products where `prod_id`=:id";
           $stmt = $conn->prepare($query);
@@ -28,23 +29,25 @@
 
           $stmt->execute();
           $product = $stmt->fetch(PDO::FETCH_ASSOC);
-          echo "Successed";
+          //echo "Successed";
     }
       //var_dump($product);
 
 
       ?>
       <?php
-$disabled = (isset($_GET)) ? "": "disabled='disabled'";
-var_dump($disabled);
+// $disabled = (isset($_GET)) ? "": "disabled='disabled'";
+// var_dump($disabled);
 
 ?>
 
 
 
+<a href="../index.php">  <h1>Digital Zone</h1> </a>
+<h2>Enter the Product Specs</h2>
+    <form action="../update.php/?id" method="POST" >
 
-<h1>Enter the Product Specs</h1>
-    <form action="../update.php" method="POST" >
+        </br>
         <div class="mb-3">
             <label for="prod_name" class="form-label">Product Name </label>
             <input type="text" name="prod_name" value="<?php echo $product['prod_name'] ?>" class="form-control" required placeholder="enter the product">
@@ -70,6 +73,7 @@ var_dump($disabled);
         </div>
         </br>
         <div>
+            <input type="hidden" name="id"  value="<?php echo $product['prod_id'] ?>">
             <button type="submit" name="update" class="btn btn-success">Update</button>
         </div>
     </form>

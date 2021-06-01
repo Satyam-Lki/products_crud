@@ -12,9 +12,10 @@
 
 <body>
   <?php
+  require_once('connect.php');
 
-  try {
-    $conn = new PDO('mysql:host=localhost;port=3306;dbname=products_db', 'root', '');
+  // try {
+  //   $conn = new PDO('mysql:host=localhost;port=3306;dbname=products_db', 'root', '');
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $query = "select * from products_db.products";
@@ -23,18 +24,18 @@
     //echo "Connected successfully";
     $products = $statement->fetchAll(PDO::FETCH_ASSOC);
     //var_dump($products);
-  } catch (PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
-  }
+  // } catch (PDOException $e) {
+  //   echo "Connection failed: " . $e->getMessage();
+  // }
 
 
 
   ?>
-  <h1>Product Crud</h1>
+  <h1>Digital Zone</h1>
   <form action="search.php/?str" method="GET">
   <div class="input-group mb-3">
   <input type="text" class="form-control" name="str" placeholder="Enter the product" aria-describedby="basic-addon2">
-  <span class="input-group-text" id="basic-addon2"><input type="submit" class="btn btn-sm btn-primary"></input></span>
+  <span class="input-group-text" id="basic-addon2"><input type="submit" class="btn btn-sm btn-primary" value="Search"></input></span>
 </div>
   </form>
 </br>

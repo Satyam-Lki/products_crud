@@ -12,14 +12,15 @@
 
 <body>
 <?php
-try{
-    $conn = new PDO('mysql:host=localhost;port=3306;dbname=products_db', 'root', '');
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    require_once('connect.php');
+// try{
+//     $conn = new PDO('mysql:host=localhost;port=3306;dbname=products_db', 'root', '');
+//     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
-}
-catch(PDOException $e){
-    echo "Connection Failed:". $e->getMessage();
-}
+// }
+// catch(PDOException $e){
+//     echo "Connection Failed:". $e->getMessage();
+// }
 
 
 $str=$_GET['str'];
@@ -33,6 +34,8 @@ $products=$stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
 ?>
+<a href="../index.php">  <h1>Digital Zone</h1> </a>
+</br>
 <table class="table">
 <thead>
   <tr>

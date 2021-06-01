@@ -11,7 +11,8 @@
 </head>
 
 <body>
-
+    <a href="../index.php">  <h1>Digital Zone</h1> </a>
+    <br>
     <h1>Enter the Product Specs</h1>
     <form action="create.php" method="POST">
         <div class="mb-3">
@@ -45,9 +46,10 @@
 
     <?php
         var_dump($_SERVER['REQUEST_METHOD']);
-    try {
-        $conn = new PDO('mysql:host=localhost;port=3306;dbname=products_db', 'root', '');
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        require_once('connect.php');
+    // try {
+    //     $conn = new PDO('mysql:host=localhost;port=3306;dbname=products_db', 'root', '');
+    //     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         if($_SERVER['REQUEST_METHOD']==='POST'){
         //var_dump($_SERVER);    
@@ -67,9 +69,9 @@
         //echo "Connected successfully";
         //$products = $statement->fetchAll(PDO::FETCH_ASSOC);
         //var_dump($products);
-    } catch (PDOException $e) {
-        echo "Connection failed: " . $e->getMessage();
-    }
+    // } catch (PDOException $e) {
+    //     echo "Connection failed: " . $e->getMessage();
+    // }
 
 
 
