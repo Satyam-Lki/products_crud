@@ -1,5 +1,7 @@
 <?php
     require_once('connect.php');
+    require('uploadImg.php');
+    session_start();
 //  try {
 //     $conn = new PDO('mysql:host=localhost;port=3306;dbname=products_db', 'root', '');
 //     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -14,6 +16,8 @@
         $price=      $_POST['price'];
         $description=$_POST['description'];
         $id= $_POST['id'];
+        $image=$_FILES;
+        echo "flag is :".$_SESSION['flag'].'</br>';
         var_dump($id);
 
         $stmt = $conn->prepare("UPDATE products SET prod_name = :product, prod_type= :type, price= :price, description= :description WHERE prod_id = :id");
@@ -23,6 +27,8 @@
         $stmt->bindvalue(':description',$description);
         $stmt->bindvalue(':id',$id);
         $edit=$stmt->execute();
+        upload($id, $image, $conn );
+
         if(isset($edit)){
             echo "Successfully updated";
         }

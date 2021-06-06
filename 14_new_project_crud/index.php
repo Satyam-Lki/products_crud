@@ -18,7 +18,9 @@
   //   $conn = new PDO('mysql:host=localhost;port=3306;dbname=products_db', 'root', '');
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $query = "select * from products_db.products";
+    $query = "select `p`.`prod_id` ,`prod_name`,`prod_type`,`price`,
+    `description`,`img_path`
+     from `products` p LEFT JOIN `images` i ON p.prod_id=i.prod_id";
     $statement = $conn->prepare($query);
     $statement->execute();
     //echo "Connected successfully";
@@ -47,6 +49,7 @@
     <thead>
       <tr>
         <th scope="col">PRODUCT ID</th>
+        <th scope="col">PRODUCT IMAGE</th>
         <th scope="col">PRODUCT</th>
         <th scope="col">CATEGORY</th>
         <th scope="col">PRICE</th>
@@ -57,6 +60,9 @@
       <?php foreach ($products as $product) : ?>
         <tr>
           <td><?php echo $product['prod_id'] ?></td>
+          <td>
+          <img src="uploads/<?php echo $product['img_path'] ?>" alt="No Image Uploaded" height="100px" width="100px">
+          </td>
           <td><?php echo $product['prod_name'] ?></td>
           <td><?php echo $product['prod_type'] ?></td>
           <td><?php echo $product['price'] ?></td>

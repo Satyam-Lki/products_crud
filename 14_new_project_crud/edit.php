@@ -1,3 +1,7 @@
+<?php
+// Start the session
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,7 +33,21 @@
 
           $stmt->execute();
           $product = $stmt->fetch(PDO::FETCH_ASSOC);
-          //echo "Successed";
+
+          //fetch the image from the server
+          $query2="select * from images where `prod_id`=:id";
+          $stmt2=$conn->prepare($query2);
+          $stmt2->bindValue(':id',$id);
+
+          $stmt2->execute();
+          $img=$stmt2->fetch(PDO::FETCH_ASSOC);
+          //var_dump($img);
+           $fg=isset($img['img_id']);
+        //   var_dump($fg);
+          $_SESSION["flag"] = $fg;
+
+
+
     }
       //var_dump($product);
 
@@ -45,8 +63,15 @@
 
 <a href="../index.php">  <h1>Digital Zone</h1> </a>
 <h2>Enter the Product Specs</h2>
-    <form action="../update.php/?id" method="POST" >
+    <form action="../update.php/?id" method="POST" enctype="multipart/form-data" >
 
+        </br>
+        <div>
+            <label for="image">Product image</label>
+            <img src="../uploads/<?php echo $img['img_path'] ?>" alt="No Image Uploaded" height="100px" width="100px">
+            </br>
+            <input type="file" name="image" value="<?php echo $img['img_path'] ?>">
+        </div>
         </br>
         <div class="mb-3">
             <label for="prod_name" class="form-label">Product Name </label>
