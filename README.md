@@ -1,10 +1,12 @@
-# README
 
-## Initial version - This is a basic project to store different smartphone to local mysql db
+# Digital Zone
 
-### Some important features of this application
-- view  products
-- search  products
-- create new  products
-- update a  products
-- delete product
+Digital Zone is your one stop shop for all your latest devices!
+Smartphones, laptops, accessories we get all your wishes covered!
+
+
+## Screenshots
+
+![App Screenshot](https://github.com/Satyam-Lki/products_crud/blob/master/uploads/Capturehomepage.png)
+
+  
