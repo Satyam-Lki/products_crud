@@ -5,9 +5,15 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Digital Zone</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
   <link rel="stylesheet" href="app.css">
+  <!-- <style>
+  .image{
+    border: 10px;
+    color: #fff;
+  }
+</style> -->
 </head>
 
 <body>
@@ -33,16 +39,16 @@
 
 
   ?>
-  <h1>Digital Zone</h1>
+  <h1 style="color: #000; font-family: Verdana, Geneva, Tahoma, sans-serif; border: 0.2rem outset grey; background-color:#92a8d1;">Digital Zone</h1>
   <form action="search.php/?str" method="GET">
   <div class="input-group mb-3">
-  <input type="text" class="form-control" name="str" placeholder="Enter the product" aria-describedby="basic-addon2">
+  <input type="text" class="form-control" name="str" placeholder="Enter the product" aria-describedby="basic-addon2" style="border: 0.5rem outset pink; padding :0.5rem;">
   <span class="input-group-text" id="basic-addon2"><input type="submit" class="btn btn-sm btn-primary" value="Search"></input></span>
 </div>
   </form>
 </br>
   <div>
-    <a href="create.php"><button type="button" class="btn btn-success">Create Product</button></a>
+    <a href="create.php"><button type="button" class="btn btn-success" >Create Product</button></a>
   </div>
   </br>
   <table class="table">
@@ -61,7 +67,7 @@
         <tr>
           <td><?php echo $product['prod_id'] ?></td>
           <td>
-          <img src="uploads/<?php echo $product['img_path'] ?>" alt="No Image Uploaded" height="100px" width="100px">
+          <img src="uploads/<?php echo $product['img_path'] ?>" alt="No Image Uploaded" height="100px" width="100px" style="border: 0.2rem solid rgba(170, 50, 220, .6); padding: 10px;">
           </td>
           <td><?php echo $product['prod_name'] ?></td>
           <td><?php echo $product['prod_type'] ?></td>

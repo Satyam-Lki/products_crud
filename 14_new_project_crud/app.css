@@ -1,3 +1,6 @@
 body{
-    padding: 50px;
+    padding: 100px;
+}
+.image{
+    border: medium dashed green;
 }

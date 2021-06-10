@@ -69,7 +69,7 @@ session_start();
             <label for="image">Product image</label>
             <img src="../uploads/<?php echo $img['img_path'] ?>" alt="No Image Uploaded" height="100px" width="100px">
             </br>
-            <input type="file" name="image" value="<?php echo $img['img_path'] ?>">
+            <input type="file" name="image" >
         </div>
         </br>
         <div class="mb-3">
